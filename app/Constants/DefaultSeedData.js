@@ -1,6 +1,6 @@
 'use strict'
 
-const DefaultACLData = {
+const DefaultSeedData = {
   ROLES: [
     { name: 'Administrator' },
     { name: 'Senior Staff' },
@@ -65,24 +65,6 @@ const DefaultACLData = {
     { age_group_id: 10, name: 'Under 16s' },
     { age_group_id: 11, name: 'Under 17s' },
   ],
-  PLAYERS: [
-    {
-      team_id: 6,
-      first_name: 'Owen',
-      last_names: 'Potter',
-      gender: 'male',
-      date_of_birth: '2010-07-27',
-      status: 'full',
-    },
-    {
-      team_id: 1,
-      first_name: 'Jake',
-      last_names: 'Potter',
-      gender: 'male',
-      date_of_birth: '2013-03-16',
-      status: 'full',
-    },
-  ],
 }
 
-module.exports = DefaultACLData
+module.exports = DefaultSeedData

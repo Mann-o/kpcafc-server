@@ -4,7 +4,7 @@ const chalk = require('chalk')
 
 const Database = use('Database')
 const Factory = use('Factory')
-const { PERMISSIONS } = use('App/Constants/DefaultACLData')
+const { PERMISSIONS } = use('App/Constants/DefaultSeedData')
 
 class PermissionSeeder {
   async run () {

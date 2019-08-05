@@ -4,7 +4,7 @@ const chalk = require('chalk')
 
 const Database = use('Database')
 const Factory = use('Factory')
-const { ROLES } = use('App/Constants/DefaultACLData')
+const { ROLES } = use('App/Constants/DefaultSeedData')
 
 class RoleSeeder {
   async run () {

@@ -4,7 +4,7 @@ const chalk = require('chalk')
 
 const Database = use('Database')
 const Factory = use('Factory')
-const { AGE_GROUPS } = use('App/Constants/DefaultACLData')
+const { AGE_GROUPS } = use('App/Constants/DefaultSeedData')
 
 class AgeGroupSeeder {
   async run () {

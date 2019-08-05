@@ -4,7 +4,7 @@ const chalk = require('chalk')
 
 const Database = use('Database')
 const Factory = use('Factory')
-const { TEAMS } = use('App/Constants/DefaultACLData')
+const { TEAMS } = use('App/Constants/DefaultSeedData')
 
 class TeamSeeder {
   async run () {
