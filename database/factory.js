@@ -25,6 +25,7 @@ const {
   },
   random: {
     arrayElement,
+    boolean,
   },
 } = require('faker')
 
@@ -73,6 +74,12 @@ Factory.blueprint('Player', async (faker, i, player) => ({
   gender: fakeOrNot(player.gender, arrayElement(GENDER_TYPES)),
   date_of_birth: fakeOrNot(player.date_of_birth, format(past(), 'y-MM-dd')),
   status: fakeOrNot(player.status, arrayElement(PLAYER_STATUS_TYPES)),
+}))
+
+Factory.blueprint('StandingOrder', async (faker, i, { player_id, reference, active }) => ({
+  player_id,
+  reference,
+  active: fakeOrNot(active, boolean()),
 }))
 
 function fakeOrNot (valueToCheck, fakedValue, toSlug = false) {
