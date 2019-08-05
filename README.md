@@ -1,28 +1,25 @@
-# Adonis API application
+# KPCAFC Server
+This is the API server for the KPCAFC Portal.
 
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
-
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
+## Requirements
+• NodeJS [latest stable](https://nodejs.org/dist/v10.16.1/node-v10.16.1-x64.msi)
+• [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Setup
-
-Use the adonis command to install the blueprint
-
+Clone the project
 ```bash
-adonis new yardstick --api-only
+# if using SSH
+git clone git@github.com:Mann-o/kpcafc-server.git
+# if using HTTPS
+git clone https://github.com/Mann-o/kpcafc-server.git
 ```
 
-or manually clone the repo and then run `npm install`.
+Install dependencies
+```bash
+yarn
+```
 
-
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
+Run in development mode
+```bash
+yarn dev
 ```
