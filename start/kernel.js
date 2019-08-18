@@ -13,6 +13,7 @@ const namedMiddleware = {
   guest: 'Adonis/Middleware/AllowGuestOnly',
   is: 'Adonis/Acl/Is',
   'check-app-key-header': 'App/Middleware/CheckAppKeyHeader',
+  'json-deserialiser': 'App/Middleware/JsonDeserialiser',
 }
 
 const serverMiddleware = [

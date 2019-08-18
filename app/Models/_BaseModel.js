@@ -8,6 +8,10 @@ class BaseModel extends Model {
       super._bootIfNotBooted()
     }
   }
+
+  static get Serializer () {
+    return use('JsonSerializer')
+  }
 }
 
 module.exports = BaseModel

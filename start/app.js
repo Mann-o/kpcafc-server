@@ -17,6 +17,7 @@ const aceProviders = [
 
 const aliases = {
   ...require('./aliases/models'),
+  ...require('./aliases/serializers'),
   ...require('./aliases/validators'),
   ...require('./aliases/vendor'),
 }
