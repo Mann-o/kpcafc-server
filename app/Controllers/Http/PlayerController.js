@@ -6,14 +6,14 @@ class PlayerController {
   async index () {
     return Player
       .query()
-      .with('standing_orders')
+      .with('standingOrders')
       .fetch()
   }
 
   async show ({ params: { id } }) {
     return Player
       .query()
-      .with('standing_orders')
+      .with('standingOrders')
       .where({ id })
       .first()
   }

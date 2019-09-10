@@ -9,10 +9,11 @@ class StandingOrderSeeder {
   async run () {
     try {
       console.log('seeding: 0008_standing_orders')
-      for (let { id: player_id, team, first_name, last_names } of (await Player.query().with('team.age_group').fetch()).toJSON()) {
+      const players = (await Player.query().with('team.ageGroup').fetch()).toJSON()
+      for (let { id: playerId, team, firstName, lastNames } of players) {
         await Factory.model('StandingOrder').create({
-          player_id,
-          reference: `${team.age_group.short_name.toUpperCase()} LP ${first_name.charAt(0).toUpperCase()} ${last_names.toUpperCase()}`,
+          player_id: playerId,
+          reference: `${team.ageGroup.shortName.toUpperCase()} LP ${firstName.charAt(0).toUpperCase()} ${lastNames.toUpperCase()}`,
         })
       }
       console.log(`${chalk.green('seeded:')} 0008_standing_orders`)

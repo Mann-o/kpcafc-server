@@ -7,7 +7,7 @@ class TeamController {
     return Team
       .query()
       .with('age_group')
-      .with('players.standing_orders')
+      .with('players.standingOrders')
       .fetch()
   }
 
@@ -15,7 +15,7 @@ class TeamController {
     return Team
       .query()
       .with('age_group')
-      .with('players.standing_orders')
+      .with('players.standingOrders')
       .where({ id })
       .first()
   }

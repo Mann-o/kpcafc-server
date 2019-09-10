@@ -6,14 +6,14 @@ class AgeGroupController {
   async index () {
     return AgeGroup
       .query()
-      .with('teams.players.standing_orders')
+      .with('teams.players.standingOrders')
       .fetch()
   }
 
   async show ({ params: { id } }) {
     return AgeGroup
       .query()
-      .with('teams.players.standing_orders')
+      .with('teams.players.standingOrders')
       .where({ id })
       .first()
   }

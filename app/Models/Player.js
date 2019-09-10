@@ -7,7 +7,7 @@ class Player extends BaseModel {
     return this.belongsTo('Team')
   }
 
-  standing_orders () {
+  standingOrders () {
     return this.hasMany('StandingOrder')
   }
 

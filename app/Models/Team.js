@@ -3,7 +3,7 @@
 const BaseModel = use('BaseModel')
 
 class Team extends BaseModel {
-  age_group () {
+  ageGroup () {
     return this.belongsTo('AgeGroup')
   }
 

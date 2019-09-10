@@ -1,5 +1,8 @@
 'use strict'
 
+const CrudOperations = use('App/Constants/CrudOperations')
+const Models = use('App/Constants/Models')
+
 const DefaultSeedData = {
   ROLES: [
     { name: 'Administrator' },
@@ -8,45 +11,22 @@ const DefaultSeedData = {
     { name: 'Coach' },
     { name: 'Parent' },
   ],
+
   PERMISSIONS: [
-    { name: 'Create Users' },
-    { name: 'View Users' },
-    { name: 'Edit Users' },
-    { name: 'Delete Users' },
-    { name: 'Create Roles' },
-    { name: 'Edit Roles' },
-    { name: 'Delete Roles' },
-    { name: 'Create Permissions' },
-    { name: 'Edit Permissions' },
-    { name: 'Delete Permissions' },
+    ...Models.reduce((acc, curr) => {
+      CrudOperations.forEach((op) => acc.push({ name: `${op} ${curr}` }))
+      return acc
+    }, []),
     { name: 'Manage User Roles' },
+    { name: 'Manage User Permissions' },
     { name: 'Manage Role Permissions' },
-    { name: 'Create Teams' },
-    { name: 'View Teams' },
-    { name: 'Edit Teams' },
-    { name: 'Delete Teams' },
-    { name: 'Create Players' },
-    { name: 'View Players' },
-    { name: 'Edit Players' },
-    { name: 'Delete Players' },
-    { name: 'Create Standing Orders' },
-    { name: 'View Standing Orders' },
-    { name: 'Edit Standing Orders' },
-    { name: 'Delete Standing Orders' },
   ],
-  AGE_GROUPS: [
-    { short_name: 'U7', name: 'Under 7' },
-    { short_name: 'U8', name: 'Under 8' },
-    { short_name: 'U9', name: 'Under 9' },
-    { short_name: 'U10', name: 'Under 10' },
-    { short_name: 'U11', name: 'Under 11' },
-    { short_name: 'U12', name: 'Under 12' },
-    { short_name: 'U13', name: 'Under 13' },
-    { short_name: 'U14', name: 'Under 14' },
-    { short_name: 'U15', name: 'Under 15' },
-    { short_name: 'U16', name: 'Under 16' },
-    { short_name: 'U17', name: 'Under 17' },
-  ],
+
+  AGE_GROUPS: [...Array(11).keys()].map((i) => ({
+    short_name: `U${i+7}`,
+    name: `Under ${i+7}s`,
+  })),
+
   TEAMS: [
     { age_group_id: 1, name: 'Under 7s' },
     { age_group_id: 2, name: 'Under 8s (Orange)' },
