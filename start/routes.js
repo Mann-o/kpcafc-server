@@ -11,25 +11,25 @@ Route.get('/', ({ response }) => {
 })
 
 Route
-  .group('api', () => {
-    Route.get('/', () => ({
-      restEndpoints: [
-        '/auth',
-        '/users',
-        '/age-groups',
-        '/teams',
-        '/players',
-        '/standing-orders',
-      ],
-    }))
-    require('./routes/auth')
-    require('./routes/users')
-    require('./routes/age-groups')
-    require('./routes/teams')
-    require('./routes/players')
-    require('./routes/standing-orders')
+  .group('Internal API', () => {
+    require('./routes/internal-api/auth')
+    require('./routes/internal-api/users')
+    require('./routes/internal-api/age-groups')
+    require('./routes/internal-api/teams')
+    require('./routes/internal-api/players')
+    require('./routes/internal-api/standing-orders')
+  })
+  .prefix('data')
+  .middleware([
+    'check-app-key-header',
+  ])
+
+Route
+  .group('Public API', () => {
+    Route.get('/users', 'UserController.publicIndex')
   })
   .prefix('api/v1')
   .middleware([
-    'check-app-key-header',
+    'validate-api-key',
+    'rate-limit-throttler',
   ])

@@ -13,6 +13,7 @@ class CreatePlayersSchema extends Schema {
       table.enu('gender', null, { useNative: true, existingType: true, enumName: 'gender_type' }).notNullable()
       table.date('date_of_birth').nullable()
       table.enu('status', null, { useNative: true, existingType: true, enumName: 'player_status_type' }).notNullable()
+      table.boolean('is_public').notNullable().defaultTo(false)
       table.timestamps()
     })
   }

@@ -14,6 +14,7 @@ class CreateUsersSchema extends Schema {
       table.enum('gender', null, { useNative: true, existingType: true, enumName: 'gender_type' }).notNullable()
       table.date('date_of_birth').nullable()
       table.datetime('last_logged_in').nullable()
+      table.boolean('is_public').notNullable().defaultTo(false)
       table.timestamps()
     })
   }

@@ -8,6 +8,7 @@ class CreateAgeGroupsSchema extends Schema {
       table.increments()
       table.string('name', 254).notNullable()
       table.string('short_name', 80).notNullable()
+      table.boolean('is_public').notNullable().defaultTo(false)
       table.timestamps()
     })
   }

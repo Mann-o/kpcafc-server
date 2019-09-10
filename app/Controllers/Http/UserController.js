@@ -7,9 +7,7 @@ const User = use('User')
 class UserController {
   async index () {
     try {
-      return User
-        .query()
-        .fetch()
+      return User.all()
     } catch (error) {
       console.log(error)
       return []
@@ -71,6 +69,18 @@ class UserController {
     } catch (error) {
       console.log(error)
       return { status: 'failed' }
+    }
+  }
+
+  async publicIndex () {
+    try {
+      return User
+        .query()
+        .where({ is_public: true })
+        .fetch()
+    } catch (error) {
+      console.log(error)
+      return []
     }
   }
 }

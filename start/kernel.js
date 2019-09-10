@@ -14,6 +14,8 @@ const namedMiddleware = {
   is: 'Adonis/Acl/Is',
   'check-app-key-header': 'App/Middleware/CheckAppKeyHeader',
   'json-deserialiser': 'App/Middleware/JsonDeserialiser',
+  'rate-limit-throttler': 'App/Middleware/RateLimitThrottler',
+  'validate-api-key': 'App/Middleware/ValidateApiKey',
 }
 
 const serverMiddleware = [

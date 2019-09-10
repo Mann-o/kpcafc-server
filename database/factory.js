@@ -36,6 +36,7 @@ Factory.blueprint('User', async (faker, i, { email_address, username, first_name
   first_name: fakeOrNot(first_name, firstName()),
   last_names: fakeOrNot(last_names, lastName()),
   gender: fakeOrNot(gender, arrayElement(GENDER_TYPES)),
+  ...(boolean() && { is_public: true }),
 }))
 
 Factory.blueprint('roles', async (faker, i, { name, description }) => {
@@ -60,11 +61,13 @@ Factory.blueprint('permissions', async (faker, i, { name, description }) => {
 Factory.blueprint('AgeGroup', async (faker, i, { name, short_name }) => ({
   name,
   short_name,
+  ...(boolean() && { is_public: true }),
 }))
 
 Factory.blueprint('Team', async (faker, i, { name, age_group_id }) => ({
   age_group_id,
   name,
+  ...(boolean() && { is_public: true }),
 }))
 
 Factory.blueprint('Player', async (faker, i, player) => ({
@@ -74,6 +77,7 @@ Factory.blueprint('Player', async (faker, i, player) => ({
   gender: fakeOrNot(player.gender, arrayElement(GENDER_TYPES)),
   date_of_birth: fakeOrNot(player.date_of_birth, format(past(), 'y-MM-dd')),
   status: fakeOrNot(player.status, arrayElement(PLAYER_STATUS_TYPES)),
+  ...(boolean() && { is_public: true }),
 }))
 
 Factory.blueprint('StandingOrder', async (faker, i, { player_id, reference, active }) => ({
