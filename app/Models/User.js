@@ -38,6 +38,10 @@ class User extends BaseModel {
     if (this.last_names != null) fullName += ` ${this.last_names}`
     return fullName
   }
+
+  applications () {
+    return this.hasMany('App/Models/Application')
+  }
 }
 
 module.exports = User

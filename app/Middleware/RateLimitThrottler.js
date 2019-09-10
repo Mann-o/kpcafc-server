@@ -8,7 +8,7 @@ class RateLimitThrottler {
   async handle ({ request, response }, next) {
     try {
       const currentMinute = getMinutes(new Date())
-      const redisTarget = `kpcafc:${request._data.apiKey}:${currentMinute}`
+      const redisTarget = `kpcafc:throttle:${request._data.apiKey}:${currentMinute}`
       const currentUsage = await Redis.get(redisTarget)
 
       if (request._data.rateLimit !== 0) {
