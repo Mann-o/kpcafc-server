@@ -5,8 +5,8 @@ const BaseValidator = use('BaseValidator')
 class UserUpdateValidator extends BaseValidator {
   get rules () {
     return {
-      username: 'required|unique:users,username|alphaNumeric|min:3',
-      email_address: 'required|unique:users,email_address|email',
+      username: `required|unique:users,username,id,${this.ctx.params.id}|alphaNumeric|min:3`,
+      email_address: `required|unique:users,email_address,id,${this.ctx.params.id}|email`,
       first_name: 'required|min:2',
       gender: 'required|in:male,female',
     }
