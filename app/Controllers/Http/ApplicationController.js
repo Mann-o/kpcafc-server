@@ -1,5 +1,7 @@
 'use strict'
 
+const uuid4 = require('uuid/v4')
+
 const Application = use('Application')
 
 class ApplicationController {
@@ -37,6 +39,7 @@ class ApplicationController {
 
       await Application.create({
         user_id,
+        api_key: uuid4(),
         ...request.post(),
       })
 
