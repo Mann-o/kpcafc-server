@@ -53,7 +53,7 @@ class ValidateAPIKey {
         .status(500)
         .json({
           status: 'error',
-          error: 'Server error. If this issue persists please contact R6Stats staff on our Discord or via support@r6stats.com.',
+          error: 'Server error. If this issue persists please contact KPCAFC',
         })
     }
   }
