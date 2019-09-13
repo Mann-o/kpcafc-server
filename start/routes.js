@@ -19,16 +19,17 @@ Route
     require('./routes/internal-api/players')
     require('./routes/internal-api/standing-orders')
   })
-  .prefix('data')
+  .prefix('api/v1')
   .middleware([
     'check-app-key-header',
+    'json-deserialiser',
   ])
 
 Route
   .group('Public API', () => {
     Route.get('/users', 'UserController.publicIndex')
   })
-  .prefix('api/v1')
+  .prefix('public')
   .middleware([
     'validate-api-key',
     'rate-limit-throttler',

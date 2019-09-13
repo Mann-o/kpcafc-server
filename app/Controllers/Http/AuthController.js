@@ -36,8 +36,10 @@ class AuthController {
     const user = await auth.getUser()
     const roles = await user.getRoles()
     return {
-      ...user.toJSON(),
-      roles,
+      user: {
+        ...user.toJSON(),
+        roles,
+      },
     }
   }
 }
