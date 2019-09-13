@@ -35,10 +35,12 @@ class AuthController {
   async getAuthenticatedUser ({ auth }) {
     const user = await auth.getUser()
     const roles = await user.getRoles()
+    const permissions = await user.getPermissions()
     return {
       user: {
         ...user.toJSON(),
         roles,
+        permissions,
       },
     }
   }
