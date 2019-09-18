@@ -9,13 +9,13 @@ hooks.after.providersBooted(() => {
   const Database = use('Database')
   const Validator = use('Validator')
 
-  Validator.extend('uniqueSlug', async (data, field, message, args) => {
-    const slug = data[field]
-    if (!slug) return
+  Validator.extend('exists', async (data, field, message, args) => {
+    const value = data[field]
+    if (!value) return
 
-    const [table] = args
+    const [table, column] = args
 
-    if ((await Database.table(table).where({ slug }).first()) != null) {
+    if ((await Database.table(table).where(column, value).first() != null)) {
       throw message
     }
   })

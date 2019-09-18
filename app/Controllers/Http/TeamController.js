@@ -19,6 +19,10 @@ class TeamController {
       .where({ id })
       .first()
   }
+
+  async store ({ request }) {
+
+  }
 }
 
 module.exports = TeamController

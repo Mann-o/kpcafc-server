@@ -5,6 +5,7 @@ const BaseValidator = use('BaseValidator')
 class UserUpdateValidator extends BaseValidator {
   get rules () {
     return {
+      id: 'number|above:0|exists:users,id',
       username: `required|unique:users,username,id,${this.ctx.params.id}|alphaNumeric|min:3`,
       email_address: `required|unique:users,email_address,id,${this.ctx.params.id}|email`,
       first_name: 'required|min:2',
@@ -14,6 +15,9 @@ class UserUpdateValidator extends BaseValidator {
 
   get messages () {
     return {
+      'id.number': 'User ID must be a valid number',
+      'id.above': 'User ID must be above 0',
+      'id.exists': 'User does not exist',
       'username.required': 'Username field required',
       'username.unique': 'Username is already in use',
       'username.alphaNumeric': 'Username field must be alphanumeric (letters and numbers) only',

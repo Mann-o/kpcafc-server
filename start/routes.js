@@ -2,6 +2,9 @@
 
 const Route = use('Route')
 
+/**
+ * Test route
+ */
 Route.get('/', ({ response }) => {
   return response
     .status(419)
@@ -10,27 +13,41 @@ Route.get('/', ({ response }) => {
     })
 })
 
+/**
+ * Authentication routes
+ */
+Route.post('auth/login', 'AuthController.login')
 Route
-  .group('Internal API', () => {
-    require('./routes/internal-api/auth')
-    require('./routes/internal-api/users')
-    require('./routes/internal-api/age-groups')
-    require('./routes/internal-api/teams')
-    require('./routes/internal-api/players')
-    require('./routes/internal-api/standing-orders')
+  .get('auth/me', 'AuthController.getAuthenticatedUser')
+  .middleware(['auth'])
+
+/**
+ * Authenticated user routes
+ */
+Route
+  .group('Authenticated Users', () => {
+    require('./routes/teams')
+    require('./routes/players')
+    require('./routes/standing-orders')
   })
   .prefix('api/v1')
   .middleware([
     'check-app-key-header',
+    'rate-limit-throttler',
     'json-deserialiser',
   ])
 
+/**
+ * Administrative user routes
+ */
 Route
-  .group('Public API', () => {
-    Route.get('/users', 'UserController.publicIndex')
+  .group('Administration', () => {
+    require('./routes/admin/users')
+    require('./routes/admin/age-groups')
+    require('./routes/admin/teams')
   })
-  .prefix('public')
+  .prefix('api/v1/admin')
   .middleware([
-    'validate-api-key',
-    'rate-limit-throttler',
+    'check-app-key-header',
+    'json-deserialiser',
   ])

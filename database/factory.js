@@ -8,9 +8,6 @@ const {
   date: {
     past,
   },
-  helpers: {
-    slugify,
-  },
   internet: {
     exampleEmail,
     userName,
@@ -86,8 +83,15 @@ Factory.blueprint('StandingOrder', async (faker, i, { player_id, reference, acti
   active: fakeOrNot(active, boolean()),
 }))
 
+function slugify (str) {
+  return str
+    .replace(/ /g, '_')
+    .replace(/[^\w\.\-]+/g, '')
+    .toLowerCase()
+}
+
 function fakeOrNot (valueToCheck, fakedValue, toSlug = false) {
   return (valueToCheck != null)
-    ? (toSlug ? slugify(valueToCheck).toLowerCase() : valueToCheck)
-    : (toSlug ? slugify(fakedValue).toLowerCase() : fakedValue)
+    ? (toSlug ? slugify(valueToCheck) : valueToCheck)
+    : (toSlug ? slugify(fakedValue) : fakedValue)
 }

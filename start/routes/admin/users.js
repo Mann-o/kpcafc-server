@@ -2,9 +2,16 @@
 
 const Route = use('Route')
 
-Route.get('users', 'UserController.index')
+Route
+  .get('users', 'UserController.index')
+  .middleware([
+    'auth',
+    'is:administrator',
+    'json-deserialiser',
+  ])
 
-Route.get('users/:id', 'UserController.show')
+Route
+  .get('users/:id', 'UserController.show')
 
 Route
   .post('users', 'UserController.store')
