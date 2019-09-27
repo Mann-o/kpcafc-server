@@ -16,7 +16,7 @@ class CheckAppKeyHeader {
         .status(500)
         .json({
           status: 'error',
-          error: 'Invalid server configuration',
+          error:  'Invalid server configuration',
         })
     }
 
@@ -25,7 +25,7 @@ class CheckAppKeyHeader {
         .status(401)
         .json({
           status: 'error',
-          error: 'KPCAFC-Api-Key header missing from request',
+          error:  'KPCAFC-Api-Key header missing from request',
         })
     }
 
@@ -34,7 +34,7 @@ class CheckAppKeyHeader {
         .status(401)
         .json({
           status: 'error',
-          error: 'KPCAFC-Api-Key header invalid',
+          error:  'KPCAFC-Api-Key header invalid',
         })
     }
 

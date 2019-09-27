@@ -2,7 +2,7 @@
 
 const BodyParserConfig = {
   json: {
-    limit: '1mb',
+    limit:  '1mb',
     strict: true,
     types: [
       'application/json',
@@ -28,8 +28,8 @@ const BodyParserConfig = {
     types: [
       'multipart/form-data',
     ],
-    maxSize: '20mb',
-    autoProcess: true,
+    maxSize:         '20mb',
+    autoProcess:     true,
     processManually: [],
   },
 }

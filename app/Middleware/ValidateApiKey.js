@@ -45,7 +45,7 @@ class ValidateAPIKey {
         .status(401)
         .json({
           status: 'error',
-          error: 'Invalid API key'
+          error:  'Invalid API key'
         })
     } catch (error) {
       console.log(error)
@@ -53,7 +53,7 @@ class ValidateAPIKey {
         .status(500)
         .json({
           status: 'error',
-          error: 'Server error. If this issue persists please contact KPCAFC',
+          error:  'Server error. If this issue persists please contact KPCAFC',
         })
     }
   }

@@ -11,8 +11,8 @@ class UserResetPasswordValidator extends BaseValidator {
 
   get messages () {
     return {
-      'new_password.required': 'New password is required',
-      'new_password.min': 'New password must be at least 6 characters',
+      'new_password.required':  'New password is required',
+      'new_password.min':       'New password must be at least 6 characters',
       'new_password.confirmed': 'New password confirmation field does not match',
     }
   }

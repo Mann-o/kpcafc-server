@@ -11,8 +11,8 @@ class TeamStoreValidator extends BaseValidator {
 
   get messages () {
     return {
-      'name.required': 'Name field required',
-      'name.min': 'Name field must contain at least 5 characters',
+      'name.required':     'Name field required',
+      'name.min':          'Name field must contain at least 5 characters',
       'name.alphaNumeric': 'Name field must be alphanumeric (letters and numbers) only',
     }
   }

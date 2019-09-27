@@ -1,6 +1,6 @@
 'use strict'
 
-const getMinutes = require('date-fns/get_minutes')
+const getMinutes = require('date-fns/getMinutes')
 
 const Redis = use('Redis')
 
@@ -25,9 +25,9 @@ class RateLimitThrottler {
           return response
             .status(429)
             .json({
-              status: 'error',
-              error: 'API usage limit exceeded - please try again later.',
-              limit: `${request._data.rateLimit} requests per minute`,
+              status:       'error',
+              error:        'API usage limit exceeded - please try again later.',
+              limit:        `${request._data.rateLimit} requests per minute`,
               requestsUsed: currentUsage,
             })
         }
@@ -39,7 +39,7 @@ class RateLimitThrottler {
         .status(500)
         .json({
           status: 'error',
-          error: 'Server error. If this issue persists please contact KPCAFC.',
+          error:  'Server error. If this issue persists please contact KPCAFC.',
         })
     }
   }

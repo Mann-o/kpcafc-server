@@ -16,16 +16,14 @@ Route.get('/', ({ response }) => {
 /**
  * Authentication routes
  */
-Route.post('auth/login', 'AuthController.login')
-Route
-  .get('auth/me', 'AuthController.getAuthenticatedUser')
-  .middleware(['auth'])
+
 
 /**
  * Authenticated user routes
  */
 Route
   .group('Authenticated Users', () => {
+    require('./routes/auth')
     require('./routes/teams')
     require('./routes/players')
     require('./routes/standing-orders')

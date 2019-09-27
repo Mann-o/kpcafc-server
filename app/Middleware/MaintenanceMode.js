@@ -13,7 +13,7 @@ class MaintenanceMode {
         .status(503)
         .json({
           status: 'error',
-          error: 'api_under_maintenance',
+          error:  'api_under_maintenance',
         })
     }
 

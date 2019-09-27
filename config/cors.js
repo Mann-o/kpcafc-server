@@ -1,7 +1,6 @@
 'use strict'
 
 const CorsConfig = {
-  origin: false,
   methods: [
     'GET',
     'PUT',
@@ -9,10 +8,11 @@ const CorsConfig = {
     'POST',
     'DELETE',
   ],
-  headers: true,
+  origin:        false,
+  headers:       true,
   exposeHeaders: false,
-  credentials: false,
-  maxAge: 90,
+  credentials:   false,
+  maxAge:        90,
 }
 
 module.exports = CorsConfig
