@@ -14,11 +14,6 @@ Route.get('/', ({ response }) => {
 })
 
 /**
- * Authentication routes
- */
-
-
-/**
  * Authenticated user routes
  */
 Route
