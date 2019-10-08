@@ -18,7 +18,6 @@ Route.get('/', ({ response }) => {
  */
 Route
   .group('Authenticated Users', () => {
-    require('./routes/auth')
     require('./routes/teams')
     require('./routes/players')
     require('./routes/standing-orders')
@@ -35,6 +34,7 @@ Route
  */
 Route
   .group('Administration', () => {
+    require('./routes/auth')
     require('./routes/admin/users')
     require('./routes/admin/age-groups')
     require('./routes/admin/teams')
