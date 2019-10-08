@@ -11,6 +11,10 @@ class Player extends BaseModel {
     return this.hasMany('StandingOrder')
   }
 
+  strip () {
+    return this.hasOne('Strip')
+  }
+
   static get computed () {
     return [
       'full_name',

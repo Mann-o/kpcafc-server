@@ -11,6 +11,14 @@ const Enums = {
     'training',
     'injured',
   ],
+  CONTACT_TYPES: [
+    'referee',
+    'manager',
+    'coach',
+    'public',
+    'personal',
+    'other',
+  ],
 }
 
 module.exports = Enums

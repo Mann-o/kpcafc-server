@@ -1,8 +1,8 @@
 'use strict'
 
-const Schema = use('Schema')
+const BaseSchema = require('../helpers/BaseSchema')
 
-class CreateRoleUserSchema extends Schema {
+class CreateRoleUserSchema extends BaseSchema {
   up () {
     this.create('role_user', (table) => {
       table.increments()

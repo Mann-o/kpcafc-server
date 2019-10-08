@@ -13,7 +13,7 @@ class UserSeeder {
       await Factory.model('User').create({
         username:      Env.get('TEST_USER_USERNAME', 'test'),
         email_address: Env.get('TEST_USER_EMAIL_ADDRESS', 'test@test.com'),
-        first_name:    Env.get('TEST_USER_FIRST_NAME', 'first'),
+        first_names:   Env.get('TEST_USER_FIRST_NAME', 'first'),
         last_names:    Env.get('TEST_USER_LAST_NAMES', 'last'),
         gender:        Env.get('TEST_USER_GENDER', 'male'),
       })

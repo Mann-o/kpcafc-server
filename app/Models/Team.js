@@ -10,6 +10,14 @@ class Team extends BaseModel {
   players () {
     return this.hasMany('Player')
   }
+
+  fixtures () {
+    return this.hasMany('Fixture')
+  }
+
+  strips () {
+    return this.hasMany('Strip')
+  }
 }
 
 module.exports = Team

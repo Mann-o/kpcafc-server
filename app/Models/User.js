@@ -14,6 +14,14 @@ class User extends BaseModel {
     })
   }
 
+  contacts () {
+    return this.hasMany('Contact')
+  }
+
+  events () {
+    return this.hasMany('Event')
+  }
+
   static get traits () {
     return [
       '@provider:Adonis/Acl/HasPermission',

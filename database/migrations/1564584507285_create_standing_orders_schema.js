@@ -1,8 +1,8 @@
 'use strict'
 
-const Schema = use('Schema')
+const BaseSchema = require('../helpers/BaseSchema')
 
-class CreateStandingOrdersSchema extends Schema {
+class CreateStandingOrdersSchema extends BaseSchema {
   up () {
     this.create('standing_orders', (table) => {
       table.increments()

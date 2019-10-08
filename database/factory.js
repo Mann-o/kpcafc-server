@@ -1,38 +1,29 @@
 'use strict'
 
-const { GENDER_TYPES, PLAYER_STATUS_TYPES } = use('App/Constants/Enums')
-const Factory = use('Factory')
-
 const format = require('date-fns/format')
 const {
-  date: {
-    past,
-  },
-  internet: {
-    exampleEmail,
-    userName,
-  },
-  lorem: {
-    word,
-    sentence,
-  },
-  name: {
-    firstName,
-    lastName,
-  },
-  random: {
-    arrayElement,
-    boolean,
-  },
+  date: { past },
+  internet: { exampleEmail, userName },
+  lorem: { word, words, sentence },
+  name: { firstName, lastName },
+  phone: { phoneNumber },
+  random: { arrayElement, boolean, uuid },
 } = require('faker')
 
+const {
+  CONTACT_TYPES,
+  GENDER_TYPES,
+  PLAYER_STATUS_TYPES,
+} = use('App/Constants/Enums')
+const Factory = use('Factory')
+
 Factory.blueprint('User', async (faker, i, { email_address, username, first_name, last_names, gender }) => ({
-  username:      fakeOrNot(username, userName().toLowerCase()),
+  username: fakeOrNot(username, userName().toLowerCase()),
   email_address: fakeOrNot(email_address, exampleEmail().toLowerCase()),
-  password:      'password',
-  first_name:    fakeOrNot(first_name, firstName()),
-  last_names:    fakeOrNot(last_names, lastName()),
-  gender:        fakeOrNot(gender, arrayElement(GENDER_TYPES)),
+  password: 'password',
+  first_names: fakeOrNot(first_name, firstName()),
+  last_names: fakeOrNot(last_names, lastName()),
+  gender: fakeOrNot(gender, arrayElement(GENDER_TYPES)),
   ...(boolean() && { is_public: true }),
 }))
 
@@ -81,6 +72,21 @@ Factory.blueprint('StandingOrder', async (faker, i, { player_id, reference, acti
   player_id,
   reference,
   active: fakeOrNot(active, boolean()),
+}))
+
+Factory.blueprint('Application', async (faker, i, { user_id }) => ({
+  user_id,
+  application_name: words(),
+  api_key: uuid(),
+}))
+
+Factory.blueprint('Contact', async (faker, i, { user_id }) => ({
+  user_id,
+  type: arrayElement(CONTACT_TYPES),
+  first_names: firstName(),
+  last_names: lastName(),
+  telephone_number: phoneNumber(),
+  email_address: exampleEmail(),
 }))
 
 function slugify (str) {
