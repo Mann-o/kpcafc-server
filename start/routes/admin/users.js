@@ -11,7 +11,7 @@ Route
   ])
 
 Route
-  .get('users/:id', 'UserController.show')
+  .get('users/:username', 'UserController.show')
 
 Route
   .post('users', 'UserController.store')

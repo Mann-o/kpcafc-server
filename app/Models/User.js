@@ -42,8 +42,10 @@ class User extends BaseModel {
   }
 
   getFullName () {
-    let fullName = this.first_name
-    if (this.last_names != null) fullName += ` ${this.last_names}`
+    let fullName = this.first_names
+    if (this.last_names != null) {
+      fullName = `${fullName} ${this.last_names}`
+    }
     return fullName
   }
 

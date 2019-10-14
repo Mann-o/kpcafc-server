@@ -17,11 +17,11 @@ const {
 } = use('App/Constants/Enums')
 const Factory = use('Factory')
 
-Factory.blueprint('User', async (faker, i, { email_address, username, first_name, last_names, gender }) => ({
+Factory.blueprint('User', async (faker, i, { email_address, username, first_names, last_names, gender }) => ({
   username: fakeOrNot(username, userName().toLowerCase()),
   email_address: fakeOrNot(email_address, exampleEmail().toLowerCase()),
   password: 'password',
-  first_names: fakeOrNot(first_name, firstName()),
+  first_names: fakeOrNot(first_names, firstName()),
   last_names: fakeOrNot(last_names, lastName()),
   gender: fakeOrNot(gender, arrayElement(GENDER_TYPES)),
   ...(boolean() && { is_public: true }),

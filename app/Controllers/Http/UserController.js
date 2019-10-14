@@ -1,7 +1,5 @@
 'use strict'
 
-const Hash = use('Hash')
-const Logger = use('Logger')
 const User = use('User')
 
 class UserController {
@@ -14,11 +12,11 @@ class UserController {
     }
   }
 
-  async show ({ params: { id }, response }) {
+  async show ({ params: { username }, response }) {
     try {
       return User
         .query()
-        .where({ id })
+        .where({ username })
         .first()
     } catch (error) {
       console.log(error)
