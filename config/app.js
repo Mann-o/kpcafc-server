@@ -9,10 +9,10 @@ const AppConfig = {
 
   http: {
     allowMethodSpoofing: true,
-    trustProxy:          false,
-    subdomainOffset:     2,
-    jsonpCallback:       'callback',
-    etag:                false,
+    trustProxy: false,
+    subdomainOffset: 2,
+    jsonpCallback: 'callback',
+    etag: false,
   },
 
   views: {
@@ -20,8 +20,8 @@ const AppConfig = {
   },
 
   static: {
-    dotfiles:   'ignore',
-    etag:       true,
+    dotfiles: 'ignore',
+    etag: true,
     extensions: false,
   },
 
@@ -34,22 +34,22 @@ const AppConfig = {
     transport: 'console',
     console: {
       driver: 'console',
-      name:   'adonis-app',
-      level:  Env.get('LOGGER_LEVEL', 'info'),
+      name: 'adonis-app',
+      level: Env.get('LOGGER_LEVEL', 'info'),
     },
     file: {
-      driver:   'file',
-      name:     'adonis-app',
+      driver: 'file',
+      name: 'adonis-app',
       filename: 'adonis.log',
-      level:    Env.get('LOGGER_LEVEL', 'info'),
+      level: Env.get('LOGGER_LEVEL', 'info'),
     },
   },
 
   cookie: {
     httpOnly: true,
     sameSite: false,
-    path:     '/',
-    maxAge:   7200,
+    path: '/',
+    maxAge: 7200,
   },
 }
 

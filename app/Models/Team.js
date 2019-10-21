@@ -18,6 +18,12 @@ class Team extends BaseModel {
   strips () {
     return this.hasMany('Strip')
   }
+
+  managers () {
+    return this
+      .belongsToMany('User')
+      .pivotTable('manager_teams')
+  }
 }
 
 module.exports = Team

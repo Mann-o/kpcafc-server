@@ -6,6 +6,7 @@ class CreateAgeGroupsSchema extends BaseSchema {
   up () {
     this.create('age_groups', (table) => {
       table.increments()
+      table.string('slug', 254).notNullable().unique()
       table.string('name', 254).notNullable()
       table.string('short_name', 80).notNullable()
       table.boolean('is_public').notNullable().defaultTo(false)

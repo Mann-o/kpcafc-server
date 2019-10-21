@@ -1,9 +1,10 @@
 'use strict'
 
+const ace = require('@adonisjs/ace')
 const chalk = require('chalk')
 const { existsSync } = require('fs')
 const { hooks } = require('@adonisjs/ignitor')
-
+const uuidValidate = require('uuid-validate')
 
 hooks.after.providersBooted(() => {
   const Database = use('Database')
@@ -19,10 +20,18 @@ hooks.after.providersBooted(() => {
       throw message
     }
   })
+
+  Validator.extend('uuid', async (data, field, message) => {
+    const uuid = data[field]
+    if (!uuid || uuid == null) return
+    if (!uuidValidate(uuid, 4)) throw message
+  })
 })
 
 hooks.before.httpServer(async () => {
   console.log(`${chalk.yellow('info:')} starting api server`)
+
+  await ace.call('kpcafc:cache:clear')
 
   if (existsSync(`./down`)) {
     console.log(`${chalk.red('error:')} failed to start api server (maintenance mode active)`)

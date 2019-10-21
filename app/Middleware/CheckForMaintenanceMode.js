@@ -5,7 +5,7 @@ const { resolve } = require('path')
 
 const Helpers = use('Helpers')
 
-class MaintenanceMode {
+class CheckForMaintenanceMode {
   async handle ({ response }, next) {
     if (existsSync(resolve(`${Helpers.appRoot()}/down`))) {
       return response
@@ -13,7 +13,7 @@ class MaintenanceMode {
         .status(503)
         .json({
           status: 'error',
-          error:  'api_under_maintenance',
+          error:  'APi is currently under maintenance, please try again later',
         })
     }
 
@@ -21,4 +21,4 @@ class MaintenanceMode {
   }
 }
 
-module.exports = MaintenanceMode
+module.exports = CheckForMaintenanceMode

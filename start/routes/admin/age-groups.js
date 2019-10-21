@@ -10,7 +10,7 @@ Route
   ])
 
 Route
-  .get('age-groups/:id', 'AgeGroupController.show')
+  .get('age-groups/:slug', 'AgeGroupController.show')
   .middleware([
     'auth',
     'is:administrator',

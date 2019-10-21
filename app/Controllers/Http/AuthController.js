@@ -18,10 +18,9 @@ class AuthController {
         const payload = await auth.attempt(user.email_address, password)
         user.last_logged_in = new Date()
         user.save()
-        return { status: 'success', payload, user }
+        return { status: 'success', payload }
       }
     } catch (error) {
-      console.log(error)
       return response
         .header('WWW_Authenticate', 'Bearer token_type="JWT"')
         .status(401)

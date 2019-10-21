@@ -22,6 +22,12 @@ class User extends BaseModel {
     return this.hasMany('Event')
   }
 
+  teams () {
+    return this
+      .belongsToMany('Team')
+      .pivotTable('manager_teams')
+  }
+
   static get traits () {
     return [
       '@provider:Adonis/Acl/HasPermission',
