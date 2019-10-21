@@ -2,9 +2,9 @@
 
 const Schema = use('Schema')
 
-class CreateManagerTeamsSchema extends Schema {
+class CreateUserTeamsSchema extends Schema {
   up () {
-    this.create('manager_teams', (table) => {
+    this.create('user_teams', (table) => {
       table.increments()
       table.integer('user_id').unsigned().index()
       table.foreign('user_id').references('id').on('users').onDelete('cascade')
@@ -15,8 +15,8 @@ class CreateManagerTeamsSchema extends Schema {
   }
 
   down () {
-    this.drop('manager_teams')
+    this.drop('user_teams')
   }
 }
 
-module.exports = CreateManagerTeamsSchema
+module.exports = CreateUserTeamsSchema

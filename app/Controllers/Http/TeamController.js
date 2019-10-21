@@ -3,12 +3,9 @@
 const Team = use('Team')
 
 class TeamController {
-  async index () {
-    return Team
-      .query()
-      .with('age_group')
-      .with('players.standingOrders')
-      .fetch()
+  async index ({ auth }) {
+    const user = await auth.getUser()
+    return user.teams().with('players').fetch()
   }
 
   async show ({ params: { id } }) {

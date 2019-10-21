@@ -25,7 +25,6 @@ Route
   .prefix('api/v1')
   .middleware([
     'check-app-key-header',
-    'rate-limit-throttler',
     'json-deserialiser',
   ])
 

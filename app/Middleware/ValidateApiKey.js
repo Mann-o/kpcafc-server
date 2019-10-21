@@ -9,6 +9,8 @@ class ValidateAPIKey {
     try {
       const authorization = request.header('authorization')
 
+      console.log('hitting validate api key')
+
       if (authorization) {
         const apiKey = authorization
           .replace('Bearer ', '')

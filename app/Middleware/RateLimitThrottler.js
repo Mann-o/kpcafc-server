@@ -25,9 +25,9 @@ class RateLimitThrottler {
           return response
             .status(429)
             .json({
-              status:       'error',
-              error:        'API usage limit exceeded - please try again later.',
-              limit:        `${request._data.rateLimit} requests per minute`,
+              status: 'error',
+              error: 'API usage limit exceeded - please try again later.',
+              limit: `${request._data.rateLimit} requests per minute`,
               requestsUsed: currentUsage,
             })
         }
@@ -35,6 +35,7 @@ class RateLimitThrottler {
 
       return next()
     } catch (error) {
+      console.log(error)
       return response
         .status(500)
         .json({
