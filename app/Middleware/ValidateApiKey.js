@@ -22,7 +22,7 @@ class ValidateAPIKey {
           validate(apiKey, 4)
           && (apiKey !== 'bearer')
         ) {
-          const redisKey = `kpcafc:apikey:${apiKey}`
+          const redisKey = `KPCAFC:apikey:${apiKey}`
           const cachedApiKey = await Redis.get(redisKey)
           const { rateLimit, revoked } = (cachedApiKey != null)
             ? JSON.parse(cachedApiKey)
