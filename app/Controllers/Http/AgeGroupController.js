@@ -5,6 +5,14 @@ const BaseController = use('BaseController')
 const Cache = use('Cache')
 
 class AgeGroupController extends BaseController {
+  constructor () {
+    super()
+    this.configureQueryData({
+      model: AgeGroup,
+      queryAgainst: 'slug',
+    })
+  }
+
   async index () {
     const ageGroups = await Cache.remember('age-groups', 30, async () => {
       return (await AgeGroup
@@ -17,7 +25,7 @@ class AgeGroupController extends BaseController {
   }
 
   async show ({ params: { slug }, response }) {
-    const ageGroup = await this._getAgeGroup({ slug })
+    const ageGroup = await this.getCachedItem(slug)
 
     return (ageGroup != null)
       ? ageGroup

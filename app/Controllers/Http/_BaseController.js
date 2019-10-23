@@ -3,20 +3,51 @@
 const Cache = use('Cache')
 
 class BaseController {
-  async getCachedItem ({ model, cacheKey }) {
-    const cachedItem = await Cache.get(`${model.toLowerCase()}:${cacheKey}`)
+  constructor () {
+    this.model = null
+    this.queryAgainst = null
+    this.cacheKey = null
+  }
 
-    if (cachedItem != null) return cachedItem
+  configureQueryData ({ model, queryAgainst }) {
+    this.model = model
+    this.queryAgainst = queryAgainst
+  }
 
-    const itemToCache = await model
+  async getCachedItem (cacheKey) {
+    this.cacheKey = cacheKey
+
+    const dataInCache = await Cache.get(`${this.model.name}:${this.cacheKey}`)
+
+    return this.handleDataInCache(dataInCache)
+  }
+
+  handleDataInCache (dataInCache) {
+    return (dataInCache != null)
+      ? dataInCache
+      : this.handleMissingCache()
+  }
+
+  async handleMissingCache () {
+    const uncachedItem = await this.getUncachedItemFromDatabase()
+
+    if (uncachedItem != null) {
+      await Cache.put(
+        `${this.model.name}:${this.cacheKey}`,
+        uncachedItem.toJSON(),
+        30
+      )
+      return uncachedItem.toJSON()
+    }
+
+    return null
+  }
+
+  getUncachedItemFromDatabase () {
+    return this.model
       .query()
-      .where({ cacheKey })
+      .where({ [this.queryAgainst]: this.cacheKey })
       .first()
-
-    if (itemToCache == null) return null
-
-    await Cache.put(`${model.toLowerCase()}:${cacheKey}`, itemToCache.toJSON(), 30)
-    return itemToCache.toJSON()
   }
 
   async clearCache ({ model, cacheKey = null }) {
